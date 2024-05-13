@@ -1,0 +1,14 @@
+Passos de um projeto Django
+    1 - Criar um ambiente virtual
+        - python -m venv nome_do_ambiente_virtual
+    2 - pip install django
+
+Iniciar um projeto em Django
+    1 - django-admin startproject nom_do_projeto .
+Criar um app
+    1 - python manage.py startapp nome_do_app
+Colocar o nosso site no ar
+    1 - python manage.py runserver
+
+Instalar o meu app
+    - no arquivo settings.py do meu projeto django, na parte onde está,  INSTALLED_APPS [] , é ai que devemos instalar o nosso app, que é loja

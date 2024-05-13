@@ -17,8 +17,11 @@ Including another URLconf
 
 # Este Arquivo é para configurar as urls do meu site (ex: www.site.com/loja)...
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # Carregando/Incluindo todos os links da nossa loja - importar include
+    # loja.urls significa -> loja é o meu app e o urls, é um arquivo python, que vai definir os meus urls
+    path('', include('loja.urls'))
 ]

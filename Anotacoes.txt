@@ -12,3 +12,30 @@ Colocar o nosso site no ar
 
 Instalar o meu app
     - no arquivo settings.py do meu projeto django, na parte onde está,  INSTALLED_APPS [] , é ai que devemos instalar o nosso app, que é loja
+
+Passos de Criar Um link/pagina
+    - garantir que os links do nosso site carregem os links da nossa loja
+    - nas urls do seu projeto incluir os links do seu aplicativo, e no seu aplicativo criar um arquivo urls.py e la adicionar os seus links.
+Para configurar um link
+    -- nas urls do seu app
+    - definir a funcao homepage do meu arquivo views.py
+    1 - dizer qual é o caminho da url
+    1 - passar a funcao que ele vai carregar, quando alguem acessar essa rota
+    1 - dar um nome parra essa url
+
+    '': Esta é a rota ou o caminho. Quando está vazio '', significa que é a página inicial do seu site. Por exemplo, se o seu site for www.meusite.com, essa rota corresponderia a www.meusite.com.
+
+    # homepage: Esta é a função de visualização que será chamada quando alguém acessar essa rota. Essa função é responsável por decidir o que o usuário verá quando acessar essa rota. Por exemplo, pode ser uma página inicial com boas-vindas ao usuário.
+
+    # name='homepage': Este é o nome que você dá para essa rota. Isso é útil para referenciar essa rota em outras partes do seu código. Por exemplo, se você quiser criar um link para essa rota, você pode usar o nome ‘homepage’ em vez de escrever a rota completa.
+
+
+Para informar ao seu projeto Django que os templates estão dentro do seu aplicativo, você precisa seguir os seguintes passos
+
+    Na settings.py do seu projeto, o Django já está configurado para procurar templates dentro de cada aplicativo do seu projeto. Isso é especificado pela linha 'APP_DIRS': True.
+    A linha 'DIRS': [] é onde você pode especificar diretórios adicionais para o Django procurar templates. No entanto, se os seus templates estão dentro de uma pasta templates em cada um dos seus aplicativos, você não precisa adicionar nada aqui.
+
+
+    !- Por padrao o o django vai procurar os seus templates dentro do seu app, em uma pasta templates
+    Dentro do seu aplicativo, crie uma pasta chamada 'templates'.
+    Dentro da pasta 'templates', crie seus arquivos html

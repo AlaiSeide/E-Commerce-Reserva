@@ -24,7 +24,7 @@ Antes de começar, certifique-se de ter instalado em sua máquina:
 https://github.com/AlaiSeide/E-Commerce-Reserva.git
 
 
-pip install -r requirements.txt
+  pip install -r requirements.txt
 
 
 6. Acesse a aplicação em seu navegador em [http://localhost:8000](http://localhost:8000).

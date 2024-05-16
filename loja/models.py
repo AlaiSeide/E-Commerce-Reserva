@@ -20,16 +20,19 @@ class Cliente(models.Model):
     # on_delete=models.CASCADE: Isso significa que se o User correspondente for excluído, então o Cliente também será excluído. É como dizer “se o User desaparecer, o Cliente também desaparecerá”.
     usuario = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
 
-
+    def __str__(self):
+        return str(self.nome)
 # Categoria (Masculino, Feminino, Infantil)
 class Categoria(models.Model):
     nome = models.CharField(max_length=100, null=True, blank=True)
-
+    def __str__(self):
+        return str(self.nome)
 
 # Tipo (Camisa, Calca)
 class Tipo(models.Model):
     nome = models.CharField(max_length=100, null=True, blank=True)
-
+    def __str__(self):
+        return str(self.nome)
 # Produto
     #- imagem
     #- nome
@@ -38,7 +41,7 @@ class Tipo(models.Model):
     #- categoria
     #- tipo
 class Produto(models.Model):
-    imagem = models.CharField(max_length=400, null=True, blank=True)
+    imagem = models.ImageField(null=True, blank=True)
     nome = models.CharField(max_length=100, null=True, blank=True)
     # ex: 10.000.000,00
     preco = models.DecimalField(max_digits=10, decimal_places=2)
@@ -51,9 +54,11 @@ class Produto(models.Model):
     categoria = models.ForeignKey(Categoria, null=True, blank=True, on_delete=models.SET_NULL)
     tipo = models.ForeignKey(Tipo, null=True, blank=True, on_delete=models.SET_NULL)
 
+    def __str__(self):
+        return f'Nome: {self.nome}, Categoria: {self.categoria}, Tipo: {self.tipo}, Preco: {self.preco}'
 
 # Itemestoque
-    # produto (ex: camisa)
+    # produto (ex: camisa) 
     # cor (ex: azul, amarelo, laranja, verde)
     # tamanho (ex: P M G)
     # quantidade
@@ -63,6 +68,8 @@ class ItemEstoque(models.Model):
     tamanho = models.CharField(max_length=200, null=True, blank=True)
     quantidade = models.IntegerField(default=0)
 
+    def __str__(self):
+        return str(self.produto)
 
 
 # Endereco
@@ -81,6 +88,9 @@ class Endereco(models.Model):
     cidade = models.CharField(max_length=200, null=True, blank=True)
     estado =models.CharField(max_length=200, null=True, blank=True)
     cliente = models.ForeignKey(Cliente, null=True, blank=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return str(self.rua)
 # Pedido
     #- cliente
     #- data_finalizacao
@@ -96,6 +106,8 @@ class Pedido(models.Model):
     codigo_transacao =  models.CharField(max_length=200, null=True, blank=True)
     data_finalizacao = models.DateTimeField(null=True, blank=True)
     endereco = models.ForeignKey(Endereco, null=True, blank=True, on_delete=models.SET_NULL)
+    def __str__(self):
+        return str(self.cliente)
 
 # ItensPedido
     # itemestoque (ex: camisa, laranja, M)
@@ -104,3 +116,6 @@ class ItensPedido(models.Model):
     itemestoque = models.ForeignKey(ItemEstoque, null=True, blank=True, on_delete=models.SET_NULL)
     quantidade = models.IntegerField(default=0)
     pedido = models.ForeignKey(Pedido, null=True, blank=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return str(self.itemestoque)

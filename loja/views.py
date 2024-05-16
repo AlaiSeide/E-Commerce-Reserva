@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Produto
 
 # Create your views here.
 # Aqui definimos o que que acontece se uma usuario entrar numa pagina, o que que vai aparecer naquela pagina
@@ -9,7 +10,9 @@ def homepage(request):
     return render(request, 'homepage.html')
 
 def loja(request):
-    return render(request, 'loja.html')
+    produtos = Produto.objects.all()
+    context = {'produtos': produtos}
+    return render(request, 'loja.html', context=context)
 
 def carrinho(request):
     return render(request, 'carrinho.html')

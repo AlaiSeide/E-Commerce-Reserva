@@ -8,4 +8,7 @@
 
 {% block body %}
     <h1>Loja</h1>
+    {% for produto in produtos %}
+        <h1>Nome: {{ produto.nome }}</h1>
+    {% endfor %}
 {% endblock %}

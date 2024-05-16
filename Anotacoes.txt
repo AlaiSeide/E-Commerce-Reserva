@@ -39,3 +39,15 @@ Para informar ao seu projeto Django que os templates estão dentro do seu aplica
     !- Por padrao o o django vai procurar os seus templates dentro do seu app, em uma pasta templates
     Dentro do seu aplicativo, crie uma pasta chamada 'templates'.
     Dentro da pasta 'templates', crie seus arquivos html
+
+Carregar arquivos estaticos(css, js, img)
+    1 - adicionar {% load static %} para cara seu arquivos html onde quer que seja carregado (css, js, img)
+    2 - no settings configurar onde está seus arquivos estaticos
+        STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static')
+    ]
+
+    3 - para usar esses arquivos estilos na sua pagina html, é so fazer o seguinte
+
+        - aqui poderia ser imagens, css ou js.
+            <link rel="stylesheet" href="{% static 'css/main.css' %}">

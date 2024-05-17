@@ -10,6 +10,7 @@ urlpatterns = [
     # name='homepage': Este é o nome que você dá para essa rota. Isso é útil para referenciar essa rota em outras partes do seu código. Por exemplo, se você quiser criar um link para essa rota, você pode usar o nome ‘homepage’ em vez de escrever a rota completa.
     path('', homepage, name='homepage'),
     path('loja/', loja, name='loja'),
+    path('loja/<str:nome_categoria>/', loja, name='loja'),
     path('minhaconta/', minha_conta, name='minha_conta'),
     path('login/', login, name='login'),
     path('carrinho/', carrinho, name='carrinho'),

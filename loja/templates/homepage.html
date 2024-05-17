@@ -10,7 +10,10 @@
     <h1>Homepage</h1>
 
     {% for banner in banners %}
-        {{ banner }}
+        <!-- /{{ banner.link_destino }} É tipo estou concatenando a link do loja com a link do banner especifico--> 
+       <a href="{% url 'loja' %}{{ banner.link_destino }} ">
+            <img src=" {{ banner.imagem.url }}" alt="">
+        </a>
     {% endfor %}
-    
+
 {% endblock %}

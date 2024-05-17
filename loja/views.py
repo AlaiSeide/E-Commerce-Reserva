@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Produto
+from .models import *
 
 # Create your views here.
 # Aqui definimos o que que acontece se uma usuario entrar numa pagina, o que que vai aparecer naquela pagina
@@ -10,7 +10,10 @@ def homepage(request):
     return render(request, 'homepage.html')
 
 def loja(request):
+    # pegando todos os itens(produtos) da minha tabela
     produtos = Produto.objects.all()
+    # print(produtos)
+    # a chave do dicionario é a variavel que eu vou poder acessar no meu template html, e o valor dessa chave é a minha lista de produtos
     context = {'produtos': produtos}
     return render(request, 'loja.html', context=context)
 

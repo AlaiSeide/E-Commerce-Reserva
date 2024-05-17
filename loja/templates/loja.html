@@ -8,7 +8,15 @@
 
 {% block body %}
     <h1>Loja</h1>
+
     {% for produto in produtos %}
+
+        <img src="{{ produto.imagem.url }}" width="300" height="450">
         <h1>Nome: {{ produto.nome }}</h1>
+        <h1>Categoria: {{ produto.categoria }}</h1>
+        <h1>Preco: {{ produto.preco }}</h1>
+        <h1>Tipo: {{ produto.tipo }}</h1>
+
     {% endfor %}
+
 {% endblock %}

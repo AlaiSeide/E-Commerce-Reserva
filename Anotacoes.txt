@@ -51,3 +51,23 @@ Carregar arquivos estaticos(css, js, img)
 
         - aqui poderia ser imagens, css ou js.
             <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+
+Relacao da tabela Produto e Categoria
+
+    Em uma relação de “um para muitos” entre “Produtos” e “Categorias”, cada produto pode ter apenas uma categoria, mas uma categoria pode ter vários produtos. É como se cada produto tivesse uma única etiqueta de categoria, mas uma categoria pode estar na etiqueta de muitos produtos.
+
+Salvar Arquivos de media
+    - settings.py 
+        # a pasta raiz onde vamos armazenar as nossas imagens
+        MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+
+        # urls das nossas imagens
+        MEDIA_URL = "/imagens/"
+    - urls.py do meu projeto
+        from django.conf.urls.static import static
+        from django.conf import settings
+        urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+

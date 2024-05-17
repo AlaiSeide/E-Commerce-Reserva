@@ -18,6 +18,8 @@ Including another URLconf
 # Este Arquivo é para configurar as urls do meu site (ex: www.site.com/loja)...
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,3 +27,5 @@ urlpatterns = [
     # loja.urls significa -> loja é o meu app e o urls, é um arquivo python, que vai definir os meus urls
     path('', include('loja.urls'))
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

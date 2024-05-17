@@ -22,6 +22,7 @@ class Cliente(models.Model):
 
     def __str__(self):
         return str(self.nome)
+    
 # Categoria (Masculino, Feminino, Infantil)
 class Categoria(models.Model):
     nome = models.CharField(max_length=100, null=True, blank=True)
@@ -119,3 +120,8 @@ class ItensPedido(models.Model):
 
     def __str__(self):
         return str(self.itemestoque)
+
+
+class Banner(models.Model):
+    imagem = 
+    link_destino = 

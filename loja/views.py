@@ -57,6 +57,28 @@ def loja(request, nome_categoria=None):
     return render(request, 'loja.html', context=context)
 
 
+def ver_produto(request, id_produto, id_cor=None):
+    tem_estoque = False
+    cores = {}
+    tamanhos = {}
+
+    # Busca um objeto Produto no banco de dados com base no id fornecido
+    produto = Produto.objects.get(id=id_produto)
+
+    # Filtra os itens de estoque que correspondem ao produto e que têm quantidade maior que 0
+    itensestoque = ItemEstoque.objects.filter(produto=produto, quantidade__gt=0)
+    if len(itensestoque) > 0:
+        tem_estoque = True
+        cores = {item.cor for item in itensestoque}
+
+        if id_cor:
+            itensestoque = ItemEstoque.objects.filter(produto=produto, quantidade__gt=0, cor__id=id_cor)
+            tamanhos = {item.tamanho for item in itensestoque}
+    # Cria um dicionário de contexto com o produto para ser passado para o template
+    context = {'produto': produto, 'itens_estoque': itensestoque, 'tem_estoque': tem_estoque, 'cores': cores, 'tamanhos': tamanhos}
+
+    # Renderiza a página 'ver_produto.html' passando o contexto
+    return render(request, 'ver_produto.html', context=context)
 
 
 def carrinho(request):

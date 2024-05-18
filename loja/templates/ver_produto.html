@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block titulo %}
+   Ver Produto
+{% endblock %}
+
+{% block body %}
+    <h3>{{ produto.nome }}</h3>
+
+    {% if tem_estoque %}
+        <!-- {{ itens_estoque }} -->
+        <img src="{{ produto.imagem.url }}" alt="Imagem do Produtoo" width="300" height="450">
+        <p>Produto: {{ produto.nome }}</p>
+        <p>Preco: {{ produto.preco }}</p>
+        
+        {% for cor in cores %}
+            {{ cor.nome }}
+            <a href="{% url 'ver_produto' produto.pk cor.pk %}"><i class="fa-solid fa-circle" style="color: {{ cor.codigo }};"></i></a>
+        {% endfor %}
+
+        {% if tamanhos %}
+            <p>Selecione o tamanho:</p>
+
+            {% for tamanho in tamanhos %}
+                <button>{{ tamanho }}</button>
+            {% endfor %}
+
+        {% endif %}
+        
+        <button>Adicionar ao Carrinho</button>
+
+    {% else %}
+        <p>Produto Fora de estoque</p>
+    {% endif %}
+
+{% endblock %}
